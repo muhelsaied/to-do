@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TodoItem from '../todoItem'
+import TodoItem from './todoItem'
 import TodoInput from './todoInput'
 
 
@@ -15,7 +15,7 @@ export default class TodoList extends Component {
             newItem, deleteItem,
             editList,
             submitChange,
-            doneItem,
+            checkItem,
             check } = this.props
         return (
             <div className='container py-5'>
@@ -40,7 +40,7 @@ export default class TodoList extends Component {
                                             text={item.text}
                                             deleteItem={() => deleteItem(item.id)}
                                             editList={() => editList(item.id)}
-                                            doneItem={() => doneItem(item.id)}
+                                            checkItem={() => checkItem(item.id)}
                                             check={check}
                                         />
                                     )

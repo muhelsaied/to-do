@@ -4,19 +4,18 @@ import { MdModeEdit, MdDeleteForever, MdCheckCircle, MdRadioButtonUnchecked } fr
 
 export default class TodoItem extends Component {
     render() {
-        const { text, deleteItem, editList, doneItem, check } = this.props
+        const { text, deleteItem, editList, checkItem, check } = this.props
         return (
             <>
                 <ListWrapper className='list-group-item' >
                     <span className='p-2 '>
-                        <i className='btn'>
+                        <i className='btn'
+                            onClick={checkItem}>
                             {
                                 check ?
                                     <MdCheckCircle
-                                        onClick={doneItem}
                                         className='icon' /> :
                                     <MdRadioButtonUnchecked
-                                        onClick={doneItem}
                                         className='icon' />
                             }
                         </i>
@@ -58,8 +57,11 @@ align-items:center;
     font-size:30px;
 }
 @media (max-width:500px) {
+    span{
+        padding:.2rem !important;
+    }
     .icon{
-    font-size:20px;
+    font-size:18px;
 }
 }
 `

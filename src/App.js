@@ -7,7 +7,6 @@ import BootStrap from 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import TodoList from './components/todolist/todolist'
-import DoneList from './components/doneList/donelist'
 import Reset from './components/reset'
 import Alert from './components/alert'
 
@@ -18,7 +17,7 @@ class App extends Component {
       {
         newItem: '',
         todoList: [],
-        doneList: [],
+        checkList: [],
         id: Uuid(),
         notification: null,
         editItem: false,
@@ -29,15 +28,19 @@ class App extends Component {
     this.deleteItem = this.deleteItem.bind(this)
     this.editList = this.editList.bind(this)
     this.submitChange = this.submitChange.bind(this)
-    this.doneItem = this.doneItem.bind(this)
+    this.checkItem = this.checkItem.bind(this)
     this.deleteAll = this.deleteAll.bind(this)
     this.changeAlert = this.changeAlert.bind(this)
+    //   this.getStorage = this.getStorage.bind(this)
+    //   this.syncStorage = this.syncStorage.bind(this)
+    //   this.deleteStorage = this.deleteStorage.bind(this)
   }
 
 
-  // components mounts
+  //compenent 
   componentDidMount() {
-
+    this.getStorage()
+    console.log(this.getStorage())
   }
 
   //  change input 
@@ -59,7 +62,7 @@ class App extends Component {
       todoList: newList,
       newItem: '',
       id: Uuid()
-    })
+    }, () => { this.syncStorage() })
     this.changeAlert('created successfully')
   }
 
@@ -79,32 +82,38 @@ class App extends Component {
       newItem: '',
       editItem: false,
       id: Uuid()
-    })
+    }, () => { this.syncStorage() })
     this.changeAlert('successfully saved')
 
   }
 
-  // done list
-  doneItem = () => {
-
-  }
 
   // delete item 
   deleteItem = (id) => {
     const deleteItem = this.state.todoList.filter(item => item.id !== id)
     this.setState({
       todoList: deleteItem
-    })
+    }, () => { this.syncStorage() })
     this.changeAlert('deleted successfully')
   }
   deleteAll = () => {
     this.setState({
       todoList: []
-    }
+    }, () => { this.deleteStorage() }
     )
     this.changeAlert('all to do has been deleted sucessfully')
   }
 
+  // done item 
+  checkItem = id => {
+    const checkItem = this.state.todoList.find(item => item.id === id)
+    const checkedList = [...this.state.checkList, checkItem]
+    this.setState({
+      check: !this.state.check,
+      checkList: checkedList
+
+    }, () => { this.syncStorage() })
+  }
 
   //  alert func
   changeAlert = (notification) => {
@@ -117,9 +126,45 @@ class App extends Component {
       })
     }, 2500)
   }
-  render() {
 
-    this.apiUrl = 'http(s)://5d0fa751c56e7600145a43e3.mockapi.io/'
+  // local storage 
+  // local storage setup
+  syncStorage = () => {
+    localStorage.setItem('List', JSON.stringify(this.state.todoList))
+    localStorage.setItem('checked', JSON.stringify(this.state.checkList))
+  }
+
+  getStorage = () => {
+    let storedList = localStorage.getItem('List')
+    let checkList = localStorage.getItem('checked')
+    if (!storedList) {
+      storedList = []
+      return storedList
+    }
+    else {
+      storedList = JSON.parse(storedList)
+    }
+    if (!checkList) {
+      checkList = []
+      return checkList
+    }
+    else {
+      checkList = JSON.parse(checkList)
+    }
+    this.setState({
+      todoList: [...storedList],
+      checkList: [...checkList]
+    })
+  }
+
+  // delete localStorage
+  deleteStorage = () => {
+    localStorage.removeItem("List");
+    localStorage.removeItem("checked");
+  }
+
+
+  render() {
     return (
       <div className='container'>
         <div className="App card mt-4 rounded">
@@ -142,11 +187,7 @@ class App extends Component {
             editList={this.editList}
             submitChange={this.submitChange}
             deleteAll={this.deleteAll}
-            doneItem={this.doneItem} />
-          <DoneList
-            {
-            ...this.state
-            }
+            checkItem={this.checkItem}
           />
         </div>
       </div>
