@@ -27,17 +27,19 @@ export default class TodoList extends Component {
                         submitChange={submitChange}
                         editItem={editItem} />
                     <div className='col-12 text-capitalize'>
-                        {
+                        {/* {
                             !todoList || todoList.length === 0 ?
                                 <h1 className='col-12 text-capitalize text-white bg-info rounded'>awesome no to do  have a nice day</h1>
                                 :
                                 <h4 className='text-uppercase text-light bg-secondary rounded py-3 my-4'>
                                     to do list
                             </h4>
-                        }
+                        } */}
                         {
                             !editItem &&
-
+                            <h4 className='text-uppercase text-light bg-secondary rounded py-3 my-4'>
+                                to do list
+                    </h4> &&
                             <ul className='list-group'>
                                 {todoList.map(
                                     item => {
