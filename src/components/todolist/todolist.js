@@ -34,6 +34,7 @@ export default class TodoList extends Component {
                             !editItem &&
                             <ul className='list-group'>
                                 {todoList.map(item => {
+                                    console.log(item.checked + 'todo.js');
                                     return (
                                         <TodoItem key={item.id}
                                             text={item.text}

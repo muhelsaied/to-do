@@ -5,9 +5,11 @@ import { MdModeEdit, MdDeleteForever, MdCheckCircle, MdRadioButtonUnchecked } fr
 export default class TodoItem extends Component {
     render() {
         const { text, deleteItem, editList, checkItem, checked } = this.props
+
+        console.log(checked)
         return (
             <>
-                <ListWrapper className='list-group-item' checked={checked} >
+                <ListWrapper className='list-group-item' show={checked} >
                     <span className='p-1 '>
                         <i
                             className={checked ?
@@ -66,7 +68,7 @@ display:flex;
 flex-direction:row;
 justify-content:space-around;
 align-items:center;
-text-decoration: ${props => props.checked ? 'line-through' : 'capitalize'};
+text-decoration: ${props => props.show ? 'line-through' : 'capitalize'};
 .text{
     text-align:center;
     word-break: break-word;

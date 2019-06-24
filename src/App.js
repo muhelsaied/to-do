@@ -38,7 +38,6 @@ class App extends Component {
   //compenent 
   componentDidMount() {
     this.getStorage()
-    console.log(this.getStorage())
   }
 
   //  change input 
@@ -104,10 +103,12 @@ class App extends Component {
   }
 
   // done item 
-  checkItem = async id => {
-    let updateItem = await this.state.todoList.find(item => item.id === id)
+  checkItem =  id => {
+    let updateItem = this.state.todoList.find(item => item.id === id)
     this.handleCheck()
     updateItem.checked = this.state.checked
+
+    console.log(updateItem + 'app.js')
     this.syncStorage()
   }
   //handleCheck
