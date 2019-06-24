@@ -12,14 +12,13 @@ export default class TodoItem extends Component {
                         <i
                             className={checked ?
                                 'btn btn-warning text-white' :
-                                'btn btn-primary text-white'}>
+                                'btn btn-primary text-white'}
+                            onClick={checkItem}>
                             {
                                 checked ?
                                     <MdCheckCircle
-                                        onClick={checkItem}
                                         className='icon' /> :
                                     <MdRadioButtonUnchecked
-                                        onClick={checkItem}
                                         className='icon' />
                             }
                         </i>
