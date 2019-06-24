@@ -21,19 +21,17 @@ class App extends Component {
         id: Uuid(),
         notification: null,
         editItem: false,
-        check: false
+        checked: false
       }
     this.handleChange = this.handleChange.bind(this)
     this.addToDo = this.addToDo.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
     this.editList = this.editList.bind(this)
     this.submitChange = this.submitChange.bind(this)
-    this.checkItem = this.checkItem.bind(this)
+    // this.checkItem = this.checkItem.bind(this)
     this.deleteAll = this.deleteAll.bind(this)
     this.changeAlert = this.changeAlert.bind(this)
-    //   this.getStorage = this.getStorage.bind(this)
-    //   this.syncStorage = this.syncStorage.bind(this)
-    //   this.deleteStorage = this.deleteStorage.bind(this)
+    this.handleCheck = this.handleCheck.bind(this)
   }
 
 
@@ -55,7 +53,8 @@ class App extends Component {
   addToDo = () => {
     const newItem = {
       text: this.state.newItem,
-      id: this.state.id
+      id: this.state.id,
+      checked: this.state.checked
     }
     const newList = [...this.state.todoList, newItem]
     this.setState({
@@ -83,7 +82,7 @@ class App extends Component {
       editItem: false,
       id: Uuid()
     }, () => { this.syncStorage() })
-    this.changeAlert('successfully saved')
+    this.changeAlert('changed successfully ')
 
   }
 
@@ -105,15 +104,19 @@ class App extends Component {
   }
 
   // done item 
-  checkItem = id => {
-    const checkItem = this.state.todoList.find(item => item.id === id)
-    const checkedList = [...this.state.checkList, checkItem]
-    this.setState({
-      check: !this.state.check,
-      checkList: checkedList
-
-    }, () => { this.syncStorage() })
+  checkItem = async id => {
+    let updateItem = await this.state.todoList.find(item => item.id === id)
+    this.handleCheck()
+    updateItem.checked = this.state.checked
+    this.syncStorage()
   }
+  //handleCheck
+  handleCheck = id => {
+    this.setState({
+      checked: !this.state.checked
+    })
+  }
+
 
   //  alert func
   changeAlert = (notification) => {
@@ -131,12 +134,10 @@ class App extends Component {
   // local storage setup
   syncStorage = () => {
     localStorage.setItem('List', JSON.stringify(this.state.todoList))
-    localStorage.setItem('checked', JSON.stringify(this.state.checkList))
   }
 
   getStorage = () => {
     let storedList = localStorage.getItem('List')
-    let checkList = localStorage.getItem('checked')
     if (!storedList) {
       storedList = []
       return storedList
@@ -144,30 +145,22 @@ class App extends Component {
     else {
       storedList = JSON.parse(storedList)
     }
-    if (!checkList) {
-      checkList = []
-      return checkList
-    }
-    else {
-      checkList = JSON.parse(checkList)
-    }
+
     this.setState({
-      todoList: [...storedList],
-      checkList: [...checkList]
+      todoList: [...storedList]
     })
   }
 
   // delete localStorage
   deleteStorage = () => {
     localStorage.removeItem("List");
-    localStorage.removeItem("checked");
   }
 
 
   render() {
     return (
-      <div className='container'>
-        <div className="App card mt-4 rounded">
+      <div className='container my-3'>
+        <div className="App card my-5 rounded">
           <Reset deleteAll={this.deleteAll} />
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
@@ -188,6 +181,7 @@ class App extends Component {
             submitChange={this.submitChange}
             deleteAll={this.deleteAll}
             checkItem={this.checkItem}
+            handleCheck={this.handleCheck}
           />
         </div>
       </div>

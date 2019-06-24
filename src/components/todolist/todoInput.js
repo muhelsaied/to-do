@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 export default class TodoInput extends Component {
     render() {
-        const { newItem,
+        const {
+            newItem,
             addToDo,
             handleChange,
             submitChange,

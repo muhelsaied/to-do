@@ -15,8 +15,7 @@ export default class TodoList extends Component {
             newItem, deleteItem,
             editList,
             submitChange,
-            checkItem,
-            check } = this.props
+            checkItem } = this.props
         return (
             <div className='container py-5'>
                 <div className='row m-0'>
@@ -41,7 +40,7 @@ export default class TodoList extends Component {
                                             deleteItem={() => deleteItem(item.id)}
                                             editList={() => editList(item.id)}
                                             checkItem={() => checkItem(item.id)}
-                                            check={check}
+                                            checked={item.checked}
                                         />
                                     )
                                 })}

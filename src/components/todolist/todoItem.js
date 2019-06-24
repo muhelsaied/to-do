@@ -4,33 +4,51 @@ import { MdModeEdit, MdDeleteForever, MdCheckCircle, MdRadioButtonUnchecked } fr
 
 export default class TodoItem extends Component {
     render() {
-        const { text, deleteItem, editList, checkItem, check } = this.props
+        const { text, deleteItem, editList, checkItem, checked } = this.props
         return (
             <>
-                <ListWrapper className='list-group-item' >
-                    <span className='p-2 '>
-                        <i className='btn'
-                            onClick={checkItem}>
+                <ListWrapper className='list-group-item' checked={checked} >
+                    <span className='p-1 '>
+                        <i
+                            className={checked ?
+                                'btn btn-warning text-white' :
+                                'btn btn-primary text-white'}>
                             {
-                                check ?
+                                checked ?
                                     <MdCheckCircle
+                                        onClick={checkItem}
                                         className='icon' /> :
                                     <MdRadioButtonUnchecked
+                                        onClick={checkItem}
                                         className='icon' />
                             }
                         </i>
                     </span>
+                    {
+                        checked ?
+                            <span className='col-6 text text-warning'>{text}</span>
+                            :
+                            <span className='col-6 text text-primary'>{text}</span>
+                    }
 
-                    <span className='col-6 text'>{text}</span>
-                    <span className='p-2' >
-                        <i className='btn btn-primary'>
+                    <span className='p-1' >
+                        <i className={
+                            checked ?
+                                'btn btn-warning' :
+                                'btn btn-primary'
+                        }>
                             <MdModeEdit
                                 className='icon'
                                 onClick={editList} />
                         </i>
                     </span>
-                    <span className='p-2 '>
-                        <i className='btn btn-danger'>
+                    <span className='p-1 '>
+                        <i className=
+                            {
+                                checked ?
+                                    'btn btn-warning' :
+                                    'btn btn-danger'
+                            }>
                             <MdDeleteForever
                                 onClick={deleteItem}
                                 className='icon' />
@@ -48,6 +66,7 @@ display:flex;
 flex-direction:row;
 justify-content:space-around;
 align-items:center;
+text-decoration: ${props => props.checked ? 'line-through' : 'capitalize'};
 .text{
     text-align:center;
     word-break: break-word;
