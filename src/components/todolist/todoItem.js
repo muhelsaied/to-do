@@ -5,8 +5,6 @@ import { MdModeEdit, MdDeleteForever, MdCheckCircle, MdRadioButtonUnchecked } fr
 export default class TodoItem extends Component {
     render() {
         const { text, deleteItem, editList, checkItem, checked } = this.props
-
-        console.log(checked)
         return (
             <>
                 <ListWrapper className='list-group-item' show={checked} >

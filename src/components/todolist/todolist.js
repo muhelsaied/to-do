@@ -33,18 +33,18 @@ export default class TodoList extends Component {
                         {
                             !editItem &&
                             <ul className='list-group'>
-                                {todoList.map(item => {
-                                    console.log(item.checked + 'todo.js');
-                                    return (
-                                        <TodoItem key={item.id}
-                                            text={item.text}
-                                            deleteItem={() => deleteItem(item.id)}
-                                            editList={() => editList(item.id)}
-                                            checkItem={() => checkItem(item.id)}
-                                            checked={item.checked}
-                                        />
-                                    )
-                                })}
+                                {todoList.map(
+                                    item => {
+                                        return (
+                                            <TodoItem key={item.id}
+                                                text={item.text}
+                                                deleteItem={() => deleteItem(item.id)}
+                                                editList={() => editList(item.id)}
+                                                checkItem={() => checkItem(item.id)}
+                                                checked={item.checked}
+                                            />
+                                        )
+                                    })}
                             </ul>
 
                         }
