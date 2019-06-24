@@ -160,7 +160,11 @@ class App extends Component {
     return (
       <div className='container my-3'>
         <div className="App card my-5 rounded">
-          <Reset deleteAll={this.deleteAll} />
+          <Reset
+            {
+            ...this.state
+            }
+            deleteAll={this.deleteAll} />
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>

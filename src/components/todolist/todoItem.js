@@ -7,13 +7,16 @@ export default class TodoItem extends Component {
         const { text, deleteItem, editList, checkItem, checked } = this.props
         return (
             <>
-                <ListWrapper className='list-group-item' show={checked} >
-                    <span className='p-1 '>
+                <ListWrapper className='list-group-item'
+                    show={checked}
+                    onClick={checkItem} >
+                    <span className='p-1 '
+                    >
                         <i
                             className={checked ?
                                 'btn btn-warning text-white' :
                                 'btn btn-primary text-white'}
-                            onClick={checkItem}>
+                        >
                             {
                                 checked ?
                                     <MdCheckCircle
@@ -33,7 +36,7 @@ export default class TodoItem extends Component {
                     <span className='p-1' >
                         <i className={
                             checked ?
-                                'btn btn-warning' :
+                                'btn btn-warning text-primary' :
                                 'btn btn-primary'
                         }>
                             <MdModeEdit
@@ -45,8 +48,8 @@ export default class TodoItem extends Component {
                         <i className=
                             {
                                 checked ?
-                                    'btn btn-warning' :
-                                    'btn btn-danger'
+                                    'btn btn-warning text-danger' :
+                                    'btn btn-danger '
                             }>
                             <MdDeleteForever
                                 onClick={deleteItem}
@@ -65,7 +68,7 @@ display:flex;
 flex-direction:row;
 justify-content:space-around;
 align-items:center;
-text-decoration: ${props => props.show ? 'line-through' : 'capitalize'};
+cursor: pointer;
 .text{
     text-align:center;
     word-break: break-word;

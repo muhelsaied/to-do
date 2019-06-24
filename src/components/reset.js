@@ -5,12 +5,16 @@ import { MdCached } from 'react-icons/md'
 
 export default class TodoLResetist extends Component {
     render() {
-        const { deleteAll } = this.props
+        const { deleteAll, editItem, todoList } = this.props
         return (
-            <DeleteWrapper className='btn btn-danger'>
-                <MdCached
-                    onClick={deleteAll} />
-            </DeleteWrapper>
+            <DeleteWrapper className='btn btn-danger'
+                onClick={deleteAll}
+                disabled={
+                    editItem ? true : false ||
+                        !todoList || todoList.length === 0 ? true : false
+                }>
+                <MdCached />
+            </DeleteWrapper >
         )
     }
 }
