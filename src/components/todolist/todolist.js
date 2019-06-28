@@ -17,7 +17,7 @@ export default class TodoList extends Component {
             submitChange,
             checkItem } = this.props
         return (
-            <div className='container py-5'>
+            <div className='container py-2'>
                 <div className='row m-0'>
 
                     <TodoInput

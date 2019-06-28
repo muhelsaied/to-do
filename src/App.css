@@ -1,17 +1,21 @@
 .App {
   text-align: center;
-  box-shadow: 11px 7px 13px 19px rgba(0,0,0,0.3);
+  box-shadow: 18px 47px 58px 4px rgba(0,0,0,0.2);
+  max-width: 800px;
+  width: 100%;
+  margin: 3% auto;
+  height: 90vh;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 30vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
 .App-header {
-  background-color: #200354;
-  min-height: 40vh;
+  background-color: #6c2ae4;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #3a049e;
 }
 
 input:active,
@@ -37,4 +41,12 @@ input:focus{
   to {
     transform: rotate(360deg);
   }
+}
+
+@media  (max-width:500px){
+
+  .App-logo {
+    height: 30vmin;
+  }
+  
 }

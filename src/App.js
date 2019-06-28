@@ -20,6 +20,7 @@ class App extends Component {
         checkList: [],
         id: Uuid(),
         notification: null,
+        color: null,
         editItem: false,
         checked: false
       }
@@ -49,7 +50,8 @@ class App extends Component {
   }
 
   //  add new to do list 
-  addToDo = () => {
+  addToDo = (event) => {
+    event.preventDefault()
     const newItem = {
       text: this.state.newItem,
       id: this.state.id,
@@ -61,7 +63,7 @@ class App extends Component {
       newItem: '',
       id: Uuid()
     }, () => { this.syncStorage() })
-    this.changeAlert('created successfully')
+    this.changeAlert('created successfully', 'success')
   }
 
   // update list 
@@ -73,7 +75,8 @@ class App extends Component {
       id: id
     })
   }
-  submitChange = () => {
+  submitChange = (event) => {
+    event.preventDefault()
     let updateItem = this.state.todoList.find(item => item.id === this.state.id)
     updateItem.text = this.state.newItem
     this.setState({
@@ -81,7 +84,7 @@ class App extends Component {
       editItem: false,
       id: Uuid()
     }, () => { this.syncStorage() })
-    this.changeAlert('changed successfully ')
+    this.changeAlert('changed successfully ', 'warning')
 
   }
 
@@ -92,14 +95,14 @@ class App extends Component {
     this.setState({
       todoList: deleteItem
     }, () => { this.syncStorage() })
-    this.changeAlert('deleted successfully')
+    this.changeAlert('deleted successfully', 'danger')
   }
   deleteAll = () => {
     this.setState({
       todoList: []
     }, () => { this.deleteStorage() }
     )
-    this.changeAlert('all to do has been deleted sucessfully')
+    this.changeAlert('all to do has been deleted sucessfully', 'danger')
   }
 
   // done item 
@@ -118,15 +121,17 @@ class App extends Component {
 
 
   //  alert func
-  changeAlert = (notification) => {
+  changeAlert = (notification, color) => {
     this.setState({
-      notification
+      notification,
+      color
     })
     setTimeout(() => {
       this.setState({
-        notification: null
+        notification: null,
+        color: null
       })
-    }, 2500)
+    }, 3500)
   }
 
   // local storage 
@@ -159,7 +164,7 @@ class App extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <div className="App card my-5 rounded">
+        <div className="App card rounded">
           <Reset
             {
             ...this.state
