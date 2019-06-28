@@ -172,7 +172,9 @@ class App extends Component {
             deleteAll={this.deleteAll} />
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-
+            {
+              new Date().toDateString()
+            }
           </header>
           <Alert
             {
