@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   box-shadow: 18px 47px 58px 4px rgba(0,0,0,0.2);
@@ -14,7 +15,9 @@
 }
 
 .App-header {
-  background-color: #6c2ae4;
+  background:url('./background.jpg') center/cover;
+  background-repeat: no-repeat;
+  /* background-color: #6c2ae4; */
   min-height: 30vh;
   display: flex;
   flex-direction: column;
