@@ -15,7 +15,8 @@ export default class TodoList extends Component {
             newItem, deleteItem,
             editList,
             submitChange,
-            checkItem } = this.props
+            checkItem,
+            onKeyPress } = this.props
         return (
             <div className='container py-2'>
                 <div className='row m-0'>
@@ -25,7 +26,8 @@ export default class TodoList extends Component {
                         newItem={newItem}
                         addToDo={addToDo}
                         submitChange={submitChange}
-                        editItem={editItem} />
+                        editItem={editItem}
+                        onKeyPress={onKeyPress} />
                     <div className='col-12 text-capitalize'>
                         {/* {
                             !todoList || todoList.length === 0 ?

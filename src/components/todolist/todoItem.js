@@ -7,17 +7,12 @@ export default class TodoItem extends Component {
         const { text, deleteItem, editList, checkItem, checked } = this.props
         return (
             <>
-                <ListWrapper className='list-group-item'
+                <ListWrapper className='list-group-item my-1'
                     show={checked}
                     onClick={checkItem} >
                     <span className='p-1 '
                     >
-                        <i
-                            className={checked ?
-                                'text-success' :
-                                'text-primary'
-                            }
-                        >
+                        <i>
                             {
                                 checked ?
                                     <MdCheckCircle
@@ -29,9 +24,9 @@ export default class TodoItem extends Component {
                     </span>
                     {
                         checked ?
-                            <span className='col-6 text text-success'>{text}</span>
+                            <span className='col-6 text '>{text}</span>
                             :
-                            <span className='col-6 text text-primary'>{text}</span>
+                            <span className='col-6 text '>{text}</span>
                     }
 
                     <span className='p-1' >
@@ -61,6 +56,9 @@ flex-direction:row;
 justify-content:space-around;
 align-items:center;
 cursor: pointer;
+background-color:${props => props.show ? '#d4edda' : '#d6d8d9'}; 
+color:${props => props.show ? '#155724' : '#0a7aea'};
+border-color:${props => props.show ? '#c3e6cb' : '#c6c8ca'}; 
 .text{
     text-align:center;
     word-break: break-word;

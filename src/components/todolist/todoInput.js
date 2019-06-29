@@ -7,11 +7,13 @@ export default class TodoInput extends Component {
             addToDo,
             handleChange,
             submitChange,
-            editItem
+            editItem,
+            onKeyPress
         } = this.props
         return (
             <div className='col-12 mb-3'>
-                <form onSubmit={editItem ? submitChange : addToDo}>
+                <form onSubmit={editItem ? submitChange : addToDo}
+                    onKeyPress={newItem ? true : onKeyPress}>
                     <div className='container text-light text-uppercase p-2 bg-primary mt-3 mb-2'>
                         <h5>{editItem ? 'change item' : 'Input item'}</h5>
                     </div>

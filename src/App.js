@@ -33,6 +33,7 @@ class App extends Component {
     this.deleteAll = this.deleteAll.bind(this)
     this.changeAlert = this.changeAlert.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
+    this.onKeyPress = this.onKeyPress.bind(this)
   }
 
 
@@ -119,7 +120,12 @@ class App extends Component {
     })
   }
 
-
+  // disable form 
+  onKeyPress = (event) => {
+    if (event.which === 13 /* Enter */) {
+      event.preventDefault();
+    }
+  }
   //  alert func
   changeAlert = (notification, color) => {
     this.setState({
@@ -193,6 +199,7 @@ class App extends Component {
             deleteAll={this.deleteAll}
             checkItem={this.checkItem}
             handleCheck={this.handleCheck}
+            onKeyPress={this.onKeyPress}
           />
         </div>
       </div>
