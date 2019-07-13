@@ -9,6 +9,7 @@ import BootStrap from 'bootstrap/dist/css/bootstrap.min.css'
 import TodoList from './components/todolist/todolist'
 import Reset from './components/reset'
 import Alert from './components/alert'
+import ResetProgress from './components/resetProgress'
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,6 @@ class App extends Component {
       {
         newItem: '',
         todoList: [],
-        checkList: [],
         id: Uuid(),
         notification: null,
         color: null,
@@ -34,6 +34,7 @@ class App extends Component {
     this.changeAlert = this.changeAlert.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
     this.onKeyPress = this.onKeyPress.bind(this)
+    this.resetProgress = this.resetProgress.bind(this)
   }
 
 
@@ -44,6 +45,7 @@ class App extends Component {
 
   //  change input 
   handleChange = (event) => {
+    console.clear()
     this.setState({
       newItem: event.target.value
     })
@@ -56,7 +58,7 @@ class App extends Component {
     const newItem = {
       text: this.state.newItem,
       id: this.state.id,
-      checked: this.state.checked
+      checked: false
     }
     const newList = [...this.state.todoList, newItem]
     this.setState({
@@ -73,7 +75,8 @@ class App extends Component {
     this.setState({
       newItem: editItem.text,
       editItem: true,
-      id: id
+      id: id,
+      checked: this.state.checked
     })
   }
   submitChange = (event) => {
@@ -94,7 +97,8 @@ class App extends Component {
   deleteItem = (id) => {
     const deleteItem = this.state.todoList.filter(item => item.id !== id)
     this.setState({
-      todoList: deleteItem
+      todoList: deleteItem,
+      checked: false
     }, () => { this.syncStorage() })
     this.changeAlert('deleted successfully', 'danger')
   }
@@ -125,6 +129,18 @@ class App extends Component {
     if (event.which === 13 /* Enter */) {
       event.preventDefault();
     }
+  }
+
+  //reset progress
+  resetProgress = () => {
+    let list = [...this.state.todoList]
+    list.forEach(item => {
+      item.checked = false
+    })
+    this.setState({
+      todoList: list
+    })
+    this.syncStorage()
   }
   //  alert func
   changeAlert = (notification, color) => {
@@ -171,6 +187,11 @@ class App extends Component {
     return (
       <div className='container my-3'>
         <div className="App card rounded">
+          <ResetProgress
+            {
+            ...this.state
+            }
+            resetProgress={this.resetProgress} />
           <Reset
             {
             ...this.state

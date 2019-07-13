@@ -29,14 +29,14 @@ export default class TodoItem extends Component {
                             <span className='col-6 text '>{text}</span>
                     }
 
-                    <span className='p-1' >
+                    <span className='p-1 btn ' >
                         <i className='text-primary'>
                             <MdModeEdit
                                 className='icon'
                                 onClick={editList} />
                         </i>
                     </span>
-                    <span className='p-1 '>
+                    <span className='p-1  btn '>
                         <i className='text-danger'>
                             <MdDeleteForever
                                 onClick={deleteItem}
@@ -56,7 +56,11 @@ flex-direction:row;
 justify-content:space-around;
 align-items:center;
 cursor: pointer;
-background-color:${props => props.show ? '#d4edda' : '#d6d8d9'}; 
+.p-1{
+    border-radius:50% !important;
+    background:${props => props.show ? '#eee' : '#191616'};
+}
+background-color:${props => props.show ? '#d4edda' : '#f3f3f3'}; 
 color:${props => props.show ? '#155724' : '#0a7aea'};
 border-color:${props => props.show ? '#c3e6cb' : '#c6c8ca'}; 
 .text{
