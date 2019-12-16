@@ -157,7 +157,7 @@ class App extends Component {
         notification: null,
         color: null
       })
-    }, 3500)
+    }, 10000)
   }
 
   // local storage 
@@ -207,10 +207,12 @@ class App extends Component {
               new Date().toDateString()
             }
           </header>
-          <Alert
-            {
-            ...this.state
-            } />
+          <div className='container py-2'>
+                    <Alert
+                      {
+                      ...this.state
+                      } />
+                      </div>
           <TodoList
             {
             ...this.state
