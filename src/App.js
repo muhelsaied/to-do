@@ -9,7 +9,7 @@ import BootStrap from 'bootstrap/dist/css/bootstrap.min.css'
 import TodoList from './components/todolist/todolist'
 import Reset from './components/reset'
 import Alert from './components/alert'
-import ResetProgress from './components/resetProgress'
+// import ResetProgress from './components/resetProgress'
 
 class App extends Component {
   constructor() {
@@ -32,7 +32,7 @@ class App extends Component {
     // this.checkItem = this.checkItem.bind(this)
     this.deleteAll = this.deleteAll.bind(this)
     this.changeAlert = this.changeAlert.bind(this)
-    this.handleCheck = this.handleCheck.bind(this)
+    // this.handleCheck = this.handleCheck.bind(this)
     this.onKeyPress = this.onKeyPress.bind(this)
     this.resetProgress = this.resetProgress.bind(this)
   }
@@ -111,18 +111,22 @@ class App extends Component {
   }
 
   // done item 
-  checkItem = id => {
+  checkItem = (id) => {
     let updateItem = this.state.todoList.find(item => item.id === id)
-    this.handleCheck()
+    // this.handleCheck()
+      //handleCheck
+    this.setState({
+      checked: !this.state.checked
+    })
     updateItem.checked = this.state.checked
     this.syncStorage()
   }
   //handleCheck
-  handleCheck = id => {
-    this.setState({
-      checked: !this.state.checked
-    })
-  }
+  // handleCheck = id => {
+  //   this.setState({
+  //     checked: !this.state.checked
+  //   })
+  // }
 
   // disable form 
   onKeyPress = (event) => {
@@ -187,11 +191,11 @@ class App extends Component {
     return (
       <div className='container my-3'>
         <div className="App card rounded">
-          <ResetProgress
+          {/* <ResetProgress
             {
             ...this.state
             }
-            resetProgress={this.resetProgress} />
+            resetProgress={this.resetProgress} /> */}
           <Reset
             {
             ...this.state

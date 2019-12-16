@@ -9,7 +9,7 @@ export default class TodoItem extends Component {
             <>
                 <ListWrapper className='list-group-item my-1'
                     show={checked}
-                    onClick={checkItem} >
+                    onClick={() => checkItem ()} >
                     <span className='p-1 '
                     >
                         <i>
