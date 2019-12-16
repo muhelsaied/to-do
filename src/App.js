@@ -157,7 +157,7 @@ class App extends Component {
         notification: null,
         color: null
       })
-    }, 10000)
+    }, 3000)
   }
 
   // local storage 
@@ -185,6 +185,8 @@ class App extends Component {
   deleteStorage = () => {
     localStorage.removeItem("List");
   }
+  //get time 
+  
 
 
   render() {
@@ -203,9 +205,13 @@ class App extends Component {
             deleteAll={this.deleteAll} />
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            {
+            <h3>
+              {
               new Date().toDateString()
-            }
+              }
+            </h3>
+            
+            
           </header>
           <div className='container py-2'>
                     <Alert
@@ -236,4 +242,3 @@ class App extends Component {
 }
 
 export default App;
-

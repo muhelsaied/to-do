@@ -11,9 +11,6 @@ export default class Alert extends Component {
                         <div className='col-12'>
                             <div className={`alert alert-${color} my-3 text-uppercase alert-dismissible fade show`} role="alert">
                                 {notification}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
                             </div>
                         </div>
                     </div>

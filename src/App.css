@@ -18,6 +18,7 @@
   background:url('./background.jpg') center/cover;
   background-repeat: no-repeat;
   /* background-color: #6c2ae4; */
+  padding: .5rem;
   min-height: 30vh;
   display: flex;
   flex-direction: column;
@@ -26,7 +27,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-header h3{
+  margin-top: .2rem;
+  background: rgba(0,0,0,.4);
+  padding: .25rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px rgb(0,0,0,0.3);
 
+}
 .App-link {
   color: #3a049e;
 }
