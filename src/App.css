@@ -17,7 +17,6 @@
 .App-header {
   background:url('./background.jpg') center/cover;
   background-repeat: no-repeat;
-  height: 70vh;
   /* background-color: #6c2ae4; */
   padding: .5rem;
   min-height: 30vh;
