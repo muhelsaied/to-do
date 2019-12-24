@@ -9,7 +9,7 @@ export default class Alert extends Component {
                     notification &&
                     <div className='row m-0'>
                         <div className='col-12'>
-                            <div className={`alert alert-${color} my-3 text-uppercase alert-dismissible fade show`} role="alert">
+                            <div className={`alert alert-${color} my-3 p-3 text-uppercase alert-dismissible fade show`} role="alert">
                                 {notification}
                             </div>
                         </div>
