@@ -118,7 +118,7 @@ class App extends Component {
     this.setState({
       checked: !this.state.checked
     })
-    updateItem.checked = this.state.checked
+    updateItem.checked = !this.state.checked
     this.syncStorage()
   }
   //handleCheck
