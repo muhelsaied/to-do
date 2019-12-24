@@ -58,11 +58,11 @@ align-items:center;
 cursor: pointer;
 .p-1{
     border-radius:50% !important;
-    background:${props => props.show ? '#eee' : '#191616'};
+    background:${props => props.show ? '#eee' : '#e0e7bb'};
 }
 background-color:${props => props.show ? '#d4edda' : '#f3f3f3'}; 
 color:${props => props.show ? '#155724' : '#0a7aea'};
-border-color:${props => props.show ? '#c3e6cb' : '#c6c8ca'}; 
+border-color:${props => props.show ? '#c3e6cb' : '#f3f3f3'}; 
 .text{
     text-align:center;
     word-break: break-word;

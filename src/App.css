@@ -44,15 +44,18 @@ input:hover,
 input:focus{
   outline: none !important;
 }
+.color-bg {
+  color: #e0e7bb !important;
+}
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 @media  (max-width:500px){
 
