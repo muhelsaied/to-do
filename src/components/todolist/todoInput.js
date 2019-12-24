@@ -15,19 +15,19 @@ export default class TodoInput extends Component {
                 <form onSubmit={editItem ? submitChange : addToDo}
                     onKeyPress={newItem ? console.log('pass') : onKeyPress}>
                     {/* // onKeyPress={onKeyPress}> */}
-                    <div className='container text-light text-uppercase p-2 bg-primary mt-3 mb-2'>
+                    <div className='container text-light text-uppercase p-2 bg-danger mt-3 mb-2'>
                         <h5>{editItem ? 'change item' : 'Input item'}</h5>
                     </div>
                     <div className='input-group'>
                         <div className='input-group-prepend'>
-                            <div className='input-group-text bg-primary text-light'>
+                            <div className='input-group-text bg-danger text-light'>
                                 <i className=''>
                                     <FaBook />
                                 </i>
                             </div>
                         </div>
                         <input
-                            className='form-control tex-capitalize '
+                            className='form-control text-capitalize '
                             placeholder='Add To Do To Your List'
                             value={newItem}
                             onChange={handleChange}

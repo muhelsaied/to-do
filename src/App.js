@@ -132,6 +132,7 @@ class App extends Component {
   onKeyPress = (event) => {
     if (event.which === 13 /* Enter */) {
       event.preventDefault();
+      this.changeAlert("please fill your to do list", "warning")
     }
   }
 
@@ -157,7 +158,7 @@ class App extends Component {
         notification: null,
         color: null
       })
-    }, 3000)
+    }, 5000)
   }
 
   // local storage 
