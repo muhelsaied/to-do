@@ -17,6 +17,7 @@
 .App-header {
   background:url('./background.jpg') center/cover;
   background-repeat: no-repeat;
+  height: 70vh;
   /* background-color: #6c2ae4; */
   padding: .5rem;
   min-height: 30vh;
@@ -28,7 +29,7 @@
   color: white;
 }
 .App-header h3{
-  margin-top: .2rem;
+  margin-top: 25%;
   background: rgba(0,0,0,.4);
   padding: .25rem;
   border-radius: 5px;

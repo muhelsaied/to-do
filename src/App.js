@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Uuid from 'uuid'
-import logo from './bcg-1.png'
+// import logo from './bcg-1.png'
 // bootstrap
 import BootStrap from 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -204,7 +204,7 @@ class App extends Component {
             }
             deleteAll={this.deleteAll} />
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            {/* <img src={logo} className="App-logo" alt="logo" /> */}
             <h3>
               {
               new Date().toDateString()
