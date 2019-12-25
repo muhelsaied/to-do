@@ -32,14 +32,14 @@ webkit-transition: 2.5s ease-in-out;
 transition: 2.5s ease-in-out;
 .close-span {
     position: absolute;
-    top: 10%;
-    right: 2%;
+    top: 0;
+    right: 0;
     text-align: center;
     // font-size: 5px;
     font-weight: 900;
     padding:.15rem .5rem;
     background: #fcfcfc;
-    border-radius: 25%;
+    border-radius: 5px;
     cursor:pointer;
 }
 `
