@@ -35,6 +35,7 @@ class App extends Component {
     // this.handleCheck = this.handleCheck.bind(this)
     this.onKeyPress = this.onKeyPress.bind(this)
     this.resetProgress = this.resetProgress.bind(this)
+    this.CloseAlert = this.CloseAlert.bind(this)
   }
 
 
@@ -128,7 +129,7 @@ class App extends Component {
   //   })
   // }
 
-  // disable form 
+  // disable enter key 
   onKeyPress = (event) => {
     if (event.which === 13 /* Enter */) {
       event.preventDefault();
@@ -158,7 +159,7 @@ class App extends Component {
         notification: null,
         color: null
       })
-    }, 5000)
+    }, 3000)
   }
 
   // local storage 
@@ -186,9 +187,12 @@ class App extends Component {
   deleteStorage = () => {
     localStorage.removeItem("List");
   }
-  //get time 
+  // alert close  button
   
-
+   CloseAlert  = ()=> {
+    const alertWrapper = document.querySelector('#alert_div');
+    alertWrapper.style.opacity = 0;
+}
 
   render() {
     return (
@@ -218,7 +222,8 @@ class App extends Component {
                     <Alert
                       {
                       ...this.state
-                      } />
+                      }
+                      CloseAlert = {this.CloseAlert}/>
                       </div>
           <TodoList
             {
