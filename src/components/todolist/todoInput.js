@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { FaBook } from 'react-icons/fa'
+import styled from 'styled-components'
 export default class TodoInput extends Component {
     render() {
         const {
@@ -11,7 +12,7 @@ export default class TodoInput extends Component {
             onKeyPress
         } = this.props
         return (
-            <div className='col-12 mb-3'>
+            <FormWrapper className='col-12 mb-3'>
                 <form onSubmit={editItem ? submitChange : addToDo}
                     onKeyPress={newItem ? console.log('pass') : onKeyPress}>
                     {/* // onKeyPress={onKeyPress}> */}
@@ -27,7 +28,7 @@ export default class TodoInput extends Component {
                             </div>
                         </div>
                         <input
-                            className='form-control text-capitalize '
+                            className='form-control text-capitalize text-center '
                             placeholder='Add To Do To Your List'
                             value={newItem}
                             onChange={handleChange}
@@ -44,7 +45,18 @@ export default class TodoInput extends Component {
 
                     </button>
                 </form>
-            </div>
+            </FormWrapper>
         )
     }
 }
+
+const FormWrapper = styled.div`
+form input{
+    outline:#e90 !important;
+    }
+form .form-control:focus ,form .form-control:active, form .form-control:hover{
+border-color : #d62f18  !important;
+box-shadow: none;
+outline:none !important;
+}
+`
