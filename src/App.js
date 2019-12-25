@@ -150,6 +150,8 @@ class App extends Component {
   }
   //  alert func
   changeAlert = (notification, color) => {
+    const alertWrapper = document.querySelector('#alert_div');
+    alertWrapper.style.opacity = 1;
     this.setState({
       notification,
       color
@@ -161,6 +163,12 @@ class App extends Component {
       })
     }, 3000)
   }
+// alert close  button
+  
+CloseAlert  = ()=> {
+  const alertWrapper = document.querySelector('#alert_div');
+  alertWrapper.style.opacity = 0;
+}
 
   // local storage 
   // local storage setup
@@ -187,13 +195,7 @@ class App extends Component {
   deleteStorage = () => {
     localStorage.removeItem("List");
   }
-  // alert close  button
   
-   CloseAlert  = ()=> {
-    const alertWrapper = document.querySelector('#alert_div');
-    alertWrapper.style.opacity = 0;
-}
-
   render() {
     return (
       <div className='container my-3'>
