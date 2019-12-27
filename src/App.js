@@ -83,13 +83,21 @@ class App extends Component {
   submitChange = (event) => {
     event.preventDefault()
     let updateItem = this.state.todoList.find(item => item.id === this.state.id)
-    updateItem.text = this.state.newItem
-    this.setState({
-      newItem: '',
-      editItem: false,
-      id: Uuid()
-    }, () => { this.syncStorage() })
-    this.changeAlert('changed successfully ', 'warning')
+    console.log(updateItem.text,this.state.newItem);
+    if (updateItem.text === this.state.newItem) {
+        this.changeAlert('no change had been maded','danger')  
+    }  
+    else{
+        updateItem.text = this.state.newItem
+            this.changeAlert('changed successfully ', 'warning')
+            this.setState({
+              newItem: '',
+              editItem: false,
+              id: Uuid()
+            }, () => { this.syncStorage() })
+      }
+    
+    
 
   }
 
