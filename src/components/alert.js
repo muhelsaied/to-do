@@ -10,7 +10,7 @@ export default class Alert extends Component {
                     notification &&
                     <div className='row m-0'>
                         <div className='col-12'>
-                            <div className={`alert alert-${color} my-3 p-3 text-uppercase alert-dismissible fade show`} role="alert">
+                            <div className={`alert alert-${color} my-3 p-3 text-uppercase alert-dismissible`} role="alert">
                                 {notification}
                                 <span 
                                 className='close-span'
@@ -26,10 +26,12 @@ export default class Alert extends Component {
 }
 const AlertWrapper = styled.div `
 opacity: 1;
-webkit-transition: 2.5s ease-in-out;
--moz-transition: 2.5s ease-in-out;
--o-transition: 2.5s ease-in-out;
-transition: 2.5s ease-in-out;
+height:0;
+transition: .5s ease-in-out;
+webkit-transition: .5s ease-in-out;
+-moz-transition: .5s ease-in-out;
+-o-transition: .5s ease-in-out;
+transition: .5s ease-in-out;
 .close-span {
     position: absolute;
     top: 0;

@@ -36,6 +36,7 @@ class App extends Component {
     this.onKeyPress = this.onKeyPress.bind(this)
     this.resetProgress = this.resetProgress.bind(this)
     this.CloseAlert = this.CloseAlert.bind(this)
+    this.alertTimer = this.alertTimer.bind(this)
   }
 
 
@@ -68,6 +69,7 @@ class App extends Component {
       id: Uuid()
     }, () => { this.syncStorage() })
     this.changeAlert('created successfully', 'success')
+    this.alertTimer()
   }
 
   // update list 
@@ -85,11 +87,13 @@ class App extends Component {
     let updateItem = this.state.todoList.find(item => item.id === this.state.id)
     console.log(updateItem.text,this.state.newItem);
     if (updateItem.text === this.state.newItem) {
-        this.changeAlert('no change had been maded','danger')  
+        this.changeAlert('no change had been maded','danger') 
+        this.alertTimer() 
     }  
     else{
         updateItem.text = this.state.newItem
             this.changeAlert('changed successfully ', 'warning')
+            this.alertTimer()
             this.setState({
               newItem: '',
               editItem: false,
@@ -110,6 +114,7 @@ class App extends Component {
       checked: false
     }, () => { this.syncStorage() })
     this.changeAlert('deleted successfully', 'danger')
+    this.alertTimer()
   }
   deleteAll = () => {
     this.setState({
@@ -117,6 +122,7 @@ class App extends Component {
     }, () => { this.deleteStorage() }
     )
     this.changeAlert('all to do has been deleted sucessfully', 'danger')
+    this.alertTimer()
   }
 
   // done item 
@@ -142,6 +148,7 @@ class App extends Component {
     if (event.which === 13 /* Enter */) {
       event.preventDefault();
       this.changeAlert("please fill your to do list", "warning")
+      this.alertTimer()
     }
   }
 
@@ -160,22 +167,33 @@ class App extends Component {
   changeAlert = (notification, color) => {
     const alertWrapper = document.querySelector('#alert_div');
     alertWrapper.style.opacity = 1;
+    alertWrapper.style.height = "5%";
+    alertWrapper.style.transform = "rotate(0)";
     this.setState({
       notification,
       color
     })
-    setTimeout(() => {
-      this.setState({
-        notification: null,
-        color: null
-      })
-    }, 3000)
+    
   }
+
+  // set timer for alert 
+  alertTimer = () => setTimeout(() => {
+      // this.setState({
+      //   notification: null,
+      //   color: null
+      // })
+      const alertWrapper = document.querySelector('#alert_div');
+      alertWrapper.style.opacity = 0;
+      alertWrapper.style.height = 0;
+      alertWrapper.style.transform = "rotate(-360deg)";
+    }, 5000)
 // alert close  button
   
 CloseAlert  = ()=> {
   const alertWrapper = document.querySelector('#alert_div');
   alertWrapper.style.opacity = 0;
+  alertWrapper.style.height = 0;
+  alertWrapper.style.transform = "rotate(-360deg)";
 }
 
   // local storage 
